@@ -1,0 +1,10 @@
+<h1>Lists</h1>
+
+<div ng-repeat="list in today.lists" class="todo-list">
+  <a ng-href="#/list/{{$index}}">{{list.name}}</a>
+  <span class="item-count" ng-if="list.items.length == 1">1 item</span>
+  <span class="item-count" ng-if="list.items.length != 1">{{list.items.length}} items</span>
+  <i class="fa fa-trash-o todo-delete" ng-click="today.deleteList($index)"></i>
+</div>
+
+<button ng-click="today.addList()">Add List</button>

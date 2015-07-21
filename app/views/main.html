@@ -1,0 +1,20 @@
+<a href="#/"><i class="fa fa-arrow-left"></i> Lists</a>
+<h2 ng-show="!main.editingList">{{main.list.name}} <i class="fa fa-pencil" ng-click="main.editList()"></i></h2>
+
+<form ng-submit="main.updateList()" ng-show="main.editingList">
+  <input type="text" ng-model="main.tempList.name" id="listName"/>
+  <input type="submit" value="Save">
+  <a href="javascript:void(0)" ng-click="main.editingList = false">Cancel</a>
+</form>
+
+<div class="row">
+  <div class="todo-item" ng-class="{done: item.done}" ng-repeat="item in main.list.items">
+    <input type="checkbox" ng-checked="item.done" ng-click="main.toggleItem(item)">
+    {{item.name}}
+    <i class="fa fa-trash-o todo-delete" ng-click="main.remove($index)"></i>
+  </div>
+  <form ng-submit="main.createItem(main.newItem)">
+  <input type="text" id="create" ng-model="main.newItem.name"/>
+  <input type="submit" value="Add">
+  </form>
+</div>
